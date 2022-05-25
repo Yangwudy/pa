@@ -27,9 +27,8 @@ def get_content(url):
     num=len(s['data']['replies'])
     i=0
     while i<num:
-        comment=s['data']['replies'][i]# 获取每栏评论
-
-        InfoDict=comment['content']['message'] # 评论内容
+        comment=s['data']['replies'][i]
+        InfoDict=comment['content']['message'] 
         
         comments.append(InfoDict)
         i=i+1

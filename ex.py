@@ -21,7 +21,7 @@ def get_content(url):
     except:
         print("jsonload error")
     
-    num=len(s['data']['replies']) # 获取每页评论栏的数量
+    num=len(s['data']['replies']) 
     i=0
     while i<num:
         comment=s['data']['replies'][i]

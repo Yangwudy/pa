@@ -18,7 +18,7 @@ neg=0
 con=0
 m=0
 
-for i in range(59):
+for i in range(60):
     try:
         result=client.sentimentClassify(x[i])
     except:
@@ -26,7 +26,7 @@ for i in range(59):
             items=result['items']
             pos+=items[0]['positive_prob']
             neg+=items[0]['negative_prob']
-            con=items[0]['confidence']
+            con+=items[0]['confidence']
             m+=1
     else:
         i+=1
