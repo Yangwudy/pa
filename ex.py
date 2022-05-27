@@ -36,18 +36,17 @@ def get_content(url):
     return comments
 
 
-def Out2File(dict):
+def out(dict):
 
     with open('BiliBiliComments.txt', 'a+',encoding='utf-8') as f:
         i=0
         for comment in dict:
             i=i+1
             try:
-                f.write('姓名：{}\t  点赞数：{}\t \n 评论内容：{}\t  评论时间：{}\t \n '.format(
-                    comment['Uname'], comment['Like'], comment['Content'], comment['Time']))
+                f.write('姓名：{}\t  点赞数：{}\t \n 评论内容：{}\t  评论时间：{}\t \n '.format(comment['Uname'], comment['Like'], comment['Content'], comment['Time']))
                 f.write("-----------------\n")
             except:
-                print("out2File error")
+                print("out error")
         print('当前页面保存完成')
 
 if __name__ == '__main__':
@@ -58,7 +57,7 @@ if __name__ == '__main__':
         try:
             content=get_content(url)
             print("page:",page)
-            Out2File(content)
+            out(content)
             page=page+1
             if page%10 == 0:
                 time.sleep(5)
