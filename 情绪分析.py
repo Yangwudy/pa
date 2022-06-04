@@ -21,14 +21,13 @@ m=0
 for i in range(60):
     try:
         result=client.sentimentClassify(x[i])
-    except:
         if result.__contains__('items'):
             items=result['items']
             pos+=items[0]['positive_prob']
             neg+=items[0]['negative_prob']
             con+=items[0]['confidence']
             m+=1
-    else:
+    except:
         i+=1
 con=con/m
 
