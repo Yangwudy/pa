@@ -17,7 +17,6 @@ def get_content(url):
         s=json.loads(html)
     except:
         print("jsonload error")
-    
     num=len(s['data']['replies'])
     for i in range(num):
         com=s['data']['replies'][i]['content']['message']
@@ -26,7 +25,6 @@ def get_content(url):
 
 
 def out(con):
-    
     with open('BC.txt', 'a+',encoding='utf-8') as f:
         for comment in con:
             try:
@@ -38,7 +36,7 @@ def out(con):
 if __name__ == '__main__':
     e=0
     page=1
-    while e == 0 and page<=20 :
+    while e == 0 and page<=20:
         url = "https://api.bilibili.com/x/v2/reply/main?next={}&type=1&oid=552309529&mode=3".format(str(page))
         try:
             content=get_content(url)
