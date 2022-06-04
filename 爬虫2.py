@@ -3,49 +3,37 @@ import time
 from bs4 import BeautifulSoup
 import json
 
-def get_html(url):
+def get_content(url):
+    comments = []
     headers = {
         'accept': '*/*',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36 Edg/101.0.1210.53',
     }
-
     r = requests.get(url, timeout=30,headers=headers)
     r.raise_for_status()
     r.endcodding = 'utf-8'
-    return r.text
-
-
-def get_content(url):
-    
-    comments = []
-    html = get_html(url)
+    html = r.text
     try:
         s=json.loads(html)
     except:
         print("jsonload error")
     
     num=len(s['data']['replies'])
-    i=0
-    while i<num:
-        comment=s['data']['replies'][i]
-        InfoDict=comment['content']['message'] 
-        
-        comments.append(InfoDict)
-        i=i+1
+    for i in range(num):
+        com=s['data']['replies'][i]['content']['message']
+        comments.append(com)
     return comments
 
 
-def Out2File(con):
+def out(con):
     
     with open('BC.txt', 'a+',encoding='utf-8') as f:
-        i=0
         for comment in con:
-            i=i+1
             try:
                 f.write(comment)
+                print('当前页面保存完成')
             except:
-                print("out2File error")
-        print('当前页面保存完成')
+                print("out error")
 
 if __name__ == '__main__':
     e=0
@@ -53,12 +41,9 @@ if __name__ == '__main__':
     while e == 0 and page<=20 :
         url = "https://api.bilibili.com/x/v2/reply/main?next={}&type=1&oid=552309529&mode=3".format(str(page))
         try:
-            print()
-            
-            # print(url)
             content=get_content(url)
             print("page:",page)
-            Out2File(content)
+            out(content)
             page=page+1
         except:
             e=1

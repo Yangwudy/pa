@@ -1,6 +1,7 @@
 import jieba
 from matplotlib.pyplot import imread
 import wordcloud
+
 txt = open("BiliBiliComments.txt", "r", encoding="utf-8").read()
 mask = imread("dls.jpg")
 stopwords = set()
