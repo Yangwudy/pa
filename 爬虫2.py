@@ -33,7 +33,7 @@ def out(con):
                 f.write(comment)
             except:
                 print("out error")
-            print('当前页面保存完成')
+        print('当前页面保存完成')
 
 if __name__ == '__main__':
     e=0
