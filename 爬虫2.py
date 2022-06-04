@@ -31,9 +31,9 @@ def out(con):
         for comment in con:
             try:
                 f.write(comment)
-                print('当前页面保存完成')
             except:
                 print("out error")
+            print('当前页面保存完成')
 
 if __name__ == '__main__':
     e=0

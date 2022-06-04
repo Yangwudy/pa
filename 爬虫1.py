@@ -38,9 +38,9 @@ def out(dict):
             try:
                 f.write('姓名：{}\t  点赞数：{}\t \n 评论内容：{}\t  评论时间：{}\t \n '.format(comment['Uname'], comment['Like'], comment['Content'], comment['Time']))
                 f.write("-----------------\n")
-                print('当前页面保存完成')
             except:
                 print("out error")
+            print('当前页面保存完成')
 
 if __name__ == '__main__':
     e=0
