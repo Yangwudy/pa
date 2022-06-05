@@ -14,7 +14,7 @@ def get_content(url):
     r.endcodding = 'utf-8'
     html = r.text
     try:
-        s=json.loads(html)
+        s=json.loads(html) #将JSON字符串转换为Python字典
     except:
         print("jsonload error")
     
