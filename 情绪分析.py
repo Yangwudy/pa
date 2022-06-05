@@ -31,7 +31,7 @@ for i in range(60):
         i+=1
 con=con/m
 
-plt.rcParams['font.sans-serif'] = 'simhei'
+plt.rcParams['font.sans-serif'] = 'simhei'  #运行配置参数中的字体（font）为黑体（SimHei）
 data = [pos, neg]
 label = ['积极情绪', '消极情绪'] 
 plt.pie(data, labels = label, autopct='%.2f%%')
