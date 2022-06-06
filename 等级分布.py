@@ -9,6 +9,9 @@ idict = {
     4: 0,
     5: 0,
     6: 0,
+    '男': 0,
+    '女': 0,
+    '保密': 0
 }
 
 def gethtml(url):
@@ -50,7 +53,9 @@ def pub(Dict):
     num=len(Dict['data']['replies'])
     for i in range(num):
         level = Dict["data"]["replies"][i]['member']['level_info']["current_level"]
+        sex = Dict["data"]["replies"][i]['member']['sex']
         idict[level]+=1
+        idict[sex]+=1
 
 if __name__ == '__main__':
     e=0
@@ -67,10 +72,17 @@ if __name__ == '__main__':
             page=page+1
         except:
             e=1
+            
     for i in range(1,7):
         x.append(idict[i])
-    plt.rcParams['font.sans-serif'] = 'simhei'
     label = ['lv.1', 'lv.2','lv.3','lv.4','lv.5','lv.6'] 
     plt.pie(x, labels = label, autopct='%.2f%%')
     plt.title('评论用户等级分布')
+    '''
+    plt.rcParams['font.sans-serif'] = 'simhei'
+    x=[idict['男'],idict['女'],idict['保密']]
+    label = ['男', '女', '保密'] 
+    plt.pie(x, labels = label, autopct='%.2f%%')
+    plt.title('评论用户性别分布')
+    '''
     plt.show()
