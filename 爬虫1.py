@@ -19,6 +19,8 @@ def get_content(url):
         print("jsonload error")
     
     num=len(s['data']['replies']) 
+
+    #提取关键信息
     for i in range(num):
         com=s['data']['replies'][i]
         Dict={} 
@@ -32,7 +34,7 @@ def get_content(url):
 
 
 def out(dict):
-
+    #保存至文件
     with open('BiliBiliComments.txt', 'a+',encoding='utf-8') as f:
         for comment in dict:
             try:
@@ -53,6 +55,6 @@ if __name__ == '__main__':
             out(content)
             page=page+1
             if page%10 == 0:
-                time.sleep(5)
+                time.sleep(5)  #每爬取10页停一次，防止ip被拉黑
         except:
             e=1

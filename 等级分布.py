@@ -30,6 +30,7 @@ def gethtml(url):
     return Dict
 
 def getcontent(Dict):
+    #提取评论内容
     comments = []
     num=len(Dict['data']['replies'])
     for i in range(num):
@@ -39,6 +40,7 @@ def getcontent(Dict):
 
 
 def out(con):
+    #保存至文件
     with open('BC.txt', 'a+',encoding='utf-8') as f:
         for comment in con:
             try:
@@ -49,6 +51,7 @@ def out(con):
 
 
 def pub(Dict):
+    #提取关键信息
     global idict
     num=len(Dict['data']['replies'])
     for i in range(num):
@@ -73,6 +76,7 @@ if __name__ == '__main__':
         except:
             e=1
             
+    #进行数据分析       
     for i in range(1,7):
         x.append(idict[i])
     label = ['lv.1', 'lv.2','lv.3','lv.4','lv.5','lv.6'] 
